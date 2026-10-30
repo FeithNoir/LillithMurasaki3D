@@ -11,6 +11,7 @@ Sketchfab: https://sketchfab.com/FeithNoir (los enlaces a cada modelo se agregar
 |---|---|---|---|---|
 | Low-poly v1 | `lowpoly/` | 3.487 | Solo cola | Cola + giro 360° |
 | Low-poly v2 | `lowpoly_v2/` | 4.915 | 34 huesos (Humanoid) | Idle, Wave, Walk, TailSway |
+| Low-poly v3 (expresiones) | `lowpoly_v3/` | 5.051 | 34 huesos (igual que v2) | Idle (con parpadeo), Wave, Walk, TailSway, Expressions |
 | TRELLIS (IA) | `trellis/` | 11.836 | No | No |
 | TRELLIS v2 (IA, limpio) | `trellis_v2/` | ~24.000 | 34 huesos (igual que Low-poly v2) | Idle, Wave, Walk, TailSway |
 
@@ -86,6 +87,27 @@ blender -b -P lowpoly/build.py      # crea lillith_lowpoly.blend y .glb (las rut
 python3 run.py trellis              # vuelve a llamar al demo de TRELLIS (requiere gradio_client)
 blender -b -P render.py -- trellis/model.glb trellis/render
 ```
+### 6. Low Poly v3 (expresiones faciales) — `lowpoly_v3/`
+La v2 queda intacta en `lowpoly_v2/`; la v3 la extiende con una cara nueva lista para expresiones.
+
+![Comparación sprite vs v2 vs v3](lowpoly_v3/comparison_v3.png)
+
+- `lillith_lowpoly_v3.blend` / `lillith_lowpoly_v3.glb`: **5.051 triángulos**, mismo rig de 34 huesos.
+- Cara nueva low-poly estilo toon: ojos con blanco, iris violeta, pupila, brillo y pestañas; cejas; boca abierta con dientes y lengua.
+- **Por defecto sonríe**: la forma base (Basis) ya es una sonrisa alegre.
+- **Shape keys** (morph targets en el GLB): `Smile` (sonrisa más amplia), `Happy` (ojos ^^ y risa), `Angry`, `Sad`, `Surprised`, `Blink` y `Wink` (guiño del ojo visible), además de `Wink.L` y `Wink.R`.
+- **Idle** ahora incluye parpadeos, y hay una animación nueva **Expressions** que recorre todas las expresiones (7 s). Video: [`expressions_preview.mp4`](lowpoly_v3/expressions_preview.mp4).
+- El flequillo está espejado respecto a v2: ahora tapa el ojo izquierdo de Lillith, igual que en el sprite `LM_Suit_V1`, y el ojo visible queda del mismo lado que en el arte.
+- Reconstruir: `blender -b -P lowpoly_v3/build_v3.py` (lee `build_v2.py` y lo modifica en memoria; ajusta las rutas `/workspace/lillith-3d` a tu entorno).
+
+![Expresiones](lowpoly_v3/expressions_grid.png)
+
+| Frente | 3/4 |
+|---|---|
+| ![](lowpoly_v3/render_front_v3.png) | ![](lowpoly_v3/render_34_v3.png) |
+
+**Limitaciones (v3):** la cara son piezas planas apenas sobre la cabeza, así que de perfil extremo parece una calcomanía; el ojo tapado por el flequillo existe pero casi no se ve; `Angry` y `Sad` son sutiles; en el GLB no hay shader toon ni contorno (solo en Blender).
+
 Herramientas: Blender 4.2.3 LTS, Python, `gradio_client`, Pillow y ffmpeg.
 
 ## Limitaciones conocidas
@@ -94,7 +116,7 @@ Herramientas: Blender 4.2.3 LTS, Python, `gradio_client`, Pillow y ffmpeg.
 
 ## Licencia
 - Modelos, renders y arte: [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) © FeithNoir (ver `LICENSE`).
-- Código (`lowpoly/build.py`, `run.py`, `render.py`, `bright.py`, `lowpoly_v2/*.py`): MIT.
+- Código (`lowpoly/build.py`, `run.py`, `render.py`, `bright.py`, `lowpoly_v2/*.py`, `lowpoly_v3/*.py`): MIT.
 
 ---
 **English:** 3D models of my OC Lillith Murasaki: a scripted low-poly toon model made in Blender (3,487 tris, rigged tail and turntable animation) and an image-to-3D test made with TRELLIS (11,836 tris). Character and art by FeithNoir. Models and art are licensed CC BY-SA 4.0; the scripts are MIT. To rebuild the low-poly model, run `blender -b -P lowpoly/build.py`. **v2** (`lowpoly_v2/`): 4,915 tris, 34-bone Humanoid-style rig, fuller side hair, block-heel pumps, and Idle/Wave/Walk/TailSway animations in the GLB; rebuild with `blender -b -P lowpoly_v2/build_v2.py` (helper scripts reference local `/workspace/lillith-3d` paths).
