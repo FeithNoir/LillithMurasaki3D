@@ -12,6 +12,7 @@ Sketchfab: https://sketchfab.com/FeithNoir (los enlaces a cada modelo se agregar
 | Low-poly v1 | `lowpoly/` | 3.487 | Solo cola | Cola + giro 360° |
 | Low-poly v2 | `lowpoly_v2/` | 4.915 | 34 huesos (Humanoid) | Idle, Wave, Walk, TailSway |
 | TRELLIS (IA) | `trellis/` | 11.836 | No | No |
+| TRELLIS v2 (IA, limpio) | `trellis_v2/` | ~24.000 | 34 huesos (igual que Low-poly v2) | Idle, Wave, Walk, TailSway |
 
 Perfil de Sketchfab: https://sketchfab.com/FeithNoir
 
@@ -54,6 +55,16 @@ La v1 se conserva intacta en `lowpoly/`; la v2 vive aparte.
 | Frente | 3/4 | Lado | Espalda |
 |---|---|---|---|
 | ![](trellis/render_bright_front.png) | ![](trellis/render_bright_34.png) | ![](trellis/render_bright_side.png) | ![](trellis/render_bright_back.png) |
+
+### 4. TRELLIS v2 (limpio, con rig) — `trellis_v2/`
+Versión mejorada del modelo generado con TRELLIS (imagen → 3D, MIT), limpiada y remallada.
+- `lillith_trellis_v2.blend` / `lillith_trellis_v2.glb`: ~24k triángulos, 1,65 m de altura.
+- `lillith_trellis_v2_albedo.png`: textura horneada de 2048 px.
+- Manos nuevas de 5 dedos y rostro proyectado desde el sprite.
+- Mismo rig de 34 huesos que Low-poly v2, con animaciones Idle, Wave, Walk y TailSway.
+- Renders (`render_front/34/side/back.png`), `comparison.png`, `turntable.mp4`, `anim_preview.mp4` y scripts (`build.py`, `render.py`, `test.py`, `look.py`, `grid.py`).
+
+Limitaciones: el rostro se estira a partir de unos 45°; queda una segunda copia borrosa del cráneo detrás de la oreja; la textura es suave lejos de la cara; hay pliegues en la cola y la caminata es rígida. Es un modelo derivado de generación con IA (TRELLIS, licencia MIT).
 
 ## Reconstruir
 ```bash
