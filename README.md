@@ -14,6 +14,11 @@ Sketchfab: https://sketchfab.com/FeithNoir (los enlaces a cada modelo se agregar
 | TRELLIS (IA) | `trellis/` | 11.836 | No | No |
 | TRELLIS v2 (IA, limpio) | `trellis_v2/` | ~24.000 | 34 huesos (igual que Low-poly v2) | Idle, Wave, Walk, TailSway |
 
+### Escenarios
+| Escenario | Carpeta | Triángulos | Objetos |
+|---|---|---|---|
+| Oficina low-poly | `office/` | ~1.250 | 97 |
+
 Perfil de Sketchfab: https://sketchfab.com/FeithNoir
 
 ## Modelos
@@ -65,6 +70,14 @@ Versión mejorada del modelo generado con TRELLIS (imagen → 3D, MIT), limpiada
 - Renders (`render_front/34/side/back.png`), `comparison.png`, `turntable.mp4`, `anim_preview.mp4` y scripts (`build.py`, `render.py`, `test.py`, `look.py`, `grid.py`).
 
 Limitaciones: el rostro se estira a partir de unos 45°; queda una segunda copia borrosa del cráneo detrás de la oreja; la textura es suave lejos de la cara; hay pliegues en la cola y la caminata es rígida. Es un modelo derivado de generación con IA (TRELLIS, licencia MIT).
+
+### 5. Oficina low-poly (escenario) — `office/`
+Oficina de Lillith en low-poly basada en `office_bg.png`, construida por script con primitivas en Blender.
+- `lillith_office.blend` / `lillith_office.glb`: unos 1.250 triángulos y 97 objetos.
+- El look toon y el contorno solo se ven en Blender; el `.glb` lleva los materiales base.
+- Renders: `render_ref_view.png`, `render_wide_34.png`, `render_with_lillith.png` y `comparison.png`; script `build.py`.
+
+Limitaciones: la ciudad exterior se ve como bloques oscuros, no hay haces de luz ni vidrio, y el encuadre de la cámara respecto a la referencia es aproximado.
 
 ## Reconstruir
 ```bash
